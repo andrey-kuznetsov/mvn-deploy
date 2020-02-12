@@ -17,7 +17,7 @@ while IFS=: read g a p v; do
         cp -f $fpath/$f.jar $fpath/$f.pom /tmp
         mvn deploy:deploy-file -DpomFile=/tmp/$f.pom -Dfile=/tmp/$f.jar -DrepositoryId=$RMT_REPO_ID -Durl=$RMT_REPO_URL -Daws.accessKeyId=$AWS_KEY_ID -Daws.secretKey=$AWS_KEY
         rm -f /tmp/$f.jar /tmp/$f.pom
-    elif [ $p == "pom" ]; then
+    elif [ $p = "pom" ]; then
         cp -f $fpath/$f.pom /tmp
         mvn deploy:deploy-file -Dfile=/tmp/$f.pom -DgroupId=$g -DartifactId=$a -Dversion=$v -DrepositoryId=$RMT_REPO_ID -Durl=$RMT_REPO_URL -Daws.accessKeyId=$AWS_KEY_ID -Daws.secretKey=$AWS_KEY
         rm -f /tmp/$f.pom
