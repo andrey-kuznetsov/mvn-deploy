@@ -24,5 +24,5 @@ while IFS=: read g a p v; do
     else
         echo "WARNING: do not know what to do with $p packaging, skipping"
     fi
-done < <(mvn dependency:collect -DincludeParents | grep -o '\s\{4\}[^:]\+\(:[^:]\+\)\{3\}' | sed 's/^ *//g')
+done < <(mvn dependency:collect -llr -DincludeParents | grep -o '\s\{4\}[^:]\+\(:[^:]\+\)\{3\}' | sed 's/^ *//g')
 
